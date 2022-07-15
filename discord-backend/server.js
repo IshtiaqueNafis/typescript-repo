@@ -1,15 +1,26 @@
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import http from "http";
+import {config} from "dotenv";
+import {authRoutes} from "./routes/authRoutes";
 
-const express = require('express');
-const http = require('http');
-const cors = require('cors');
-const mongoose = require('mongoose');
-require('dotenv').config();
+
+config();
+
+//custom files
+
 
 const PORT = process.env.PORT || process.env.API_PORT;
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+//register the routes
+app.use('/api/auth',authRoutes)
+
+
 
 const server = http.createServer(app);
 
