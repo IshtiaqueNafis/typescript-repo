@@ -2,6 +2,7 @@ import express from "express";
 import {AuthControllers} from "../controllers/auth/auth.Controllers";
 import {createValidator} from "express-joi-validation";
 import joi from "joi";
+import {verifyToken} from "../middleware/authMiddleware";
 
 const validator = createValidator({})
 const registerSchema = joi.object({
@@ -21,5 +22,9 @@ const authRoutes = express.Router()
 authRoutes.post('/register', validator.body(registerSchema), AuthControllers.postRegister);
 
 authRoutes.post('/login', validator.body(loginSchema), AuthControllers.postLogin);
+
+authRoutes.get("/test",verifyToken,(req,res)=>{
+    res.send('request passed');
+} )
 
 export {authRoutes};

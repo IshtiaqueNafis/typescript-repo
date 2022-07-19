@@ -20,6 +20,8 @@ app.use(cors());
 //register the routes
 app.use('/api/auth',authRoutes)
 
+// test route to verify if our middleware is working
+
 
 
 const server = http.createServer(app);
