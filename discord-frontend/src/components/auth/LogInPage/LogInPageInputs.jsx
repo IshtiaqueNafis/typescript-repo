@@ -17,7 +17,7 @@ const LogInPageInputs = () => {
         mode: "onTouched"
     });
 
-    const onSubmitHandler = async data => {
+    const onSubmitHandler = data => {
 
         try {
             dispatch(logInUserAsync({data}));
